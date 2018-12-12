@@ -1,6 +1,5 @@
  // Creates an array that lists out all of the options (Rock, Paper, or Scissors).
- var randomArray = ["rock", "paper", "scissors"];
- //console.log(randomWords.length);
+ var randomArray = ["Superman", "Batman", "The Flash", "Martian Man Hunter", "Wonder Woman"];
  var guesses = [];
 
  // Creating variables to hold the number of wins, losses, and ties. They start at 0.
@@ -19,42 +18,32 @@
      // Determines which key was pressed.
      var userGuess = event.key;
 
-     // Randomly chooses a choice from the options array. This is the Computer's guess.
-     var randomWord = randomArray[Math.floor(Math.random() * randomArray.length)];
+     // Randomly generates a word from the array.
+     function randomWordGen(){
+        var randomWord = randomArray[Math.floor(Math.random() * randomArray.length)];
+        return randomWord;
+        //console.log(randomWord);
+     }  
 
-     // Reworked our code from last step to use "else if" instead of lots of if statements.
+     function compareWords(randomWord){
+         for (i=0; i<randomWord.length; i++){
+             console.log(randomWord[i]);
+         }
+     }
+     var rand = randomWordGen();
 
-     // This logic determines the outcome of the game (win/loss/tie), and increments the appropriate number
-     console.log(randomWord);
-    //  while (guessCount < 11){
-    //     for (i=0; i<randomWord.length; i++){
-    //         if (userGuess===randomWord[i]){
-    //             console.log(randomWord);
-    //             //guessCount++;
-    //         }
-    //         else {
-    //             guesses.push(userGuess);
-    //             console.log(randomWord);
-    //             //guessCount++;
-    //         }
-    //     }
-    //  }
-    //  if ((userGuess === "r") || (userGuess === "p") || (userGuess === "s")) {
-
-    //      if (userGuess === "r" && computerGuess === "s") {
-    //          wins++;
-    //      }
-    //      if (userGuess === "s" && computerGuess === "p") {
-    //          wins++;
-    //      }
-    //      if (userGuess === "p" && computerGuess === "r") {
-    //          wins++;
-    //      } else if (userGuess === computerGuess) {
-    //          ties++;
-    //      } else {
-    //          losses++;
-    //      }
-
+     compareWords(rand);
+        // for (i=0; i<randomWord.length; i++){
+        //     if (userGuess===randomWord[i]){
+        //         console.log(randomWord);
+        //         //guessCount++;
+        //     }
+        //     else {
+        //         guesses.push(userGuess);
+        //         console.log(randomWord);
+        //         //guessCount++;
+        //     }
+        // }
          // Hide the directions
          directions.textContent = "";
 

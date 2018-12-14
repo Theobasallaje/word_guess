@@ -37,12 +37,13 @@ function dashDisplay(randomWord){
 function guesses(userGuess){
     guessesArray.push(userGuess);
     console.log(guessesArray);
-    guessElement.textContent = guessesArray.join(" "); //try append or add you guessed to the textContent
+    guessElement.textContent = "You have guessed: " + guessesArray.join(" "); //try append or add you guessed to the textContent
 }
 
 function compareWords(randomWord, userGuess){
-         guesses(userGuess);
-         
+        guesses(userGuess);
+        guessCount--;
+        guessCountElement.textContent = guessCount;
          
         for (var i=0; i<randomWord.length; i++){
             console.log(randomWord[i]);
@@ -70,8 +71,7 @@ function compareWords(randomWord, userGuess){
             startGame();
             return
         }
-        guessCount--;
-        guessCountElement.textContent = guessCount;
+        
 }
 
 startGame();
@@ -79,8 +79,8 @@ startGame();
 function startGame(){
     dashes = [];
     guessesArray = [];
-    guessElement.textContent = "";
-    guessCount = 10;
+    guessElement.textContent = "You have guessed: ";
+    guessCount = 11;
     rand = randomWordGen();
     dashDisplay(rand);
 }
@@ -90,7 +90,7 @@ function startGame(){
 
      // Determines which key was pressed.
      var userGuess = event.key;
-     console.log("user guess: " + userGuess);
+     //console.log("user guess: " + userGuess);
 
     compareWords(rand, userGuess);
    

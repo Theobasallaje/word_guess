@@ -6,13 +6,16 @@
 
  // Creating variables. They start at 0.
  var wins = 0;
+ var losses = 0;
  var guessCount = 0;
+ var rand;
 
  // Create variables that hold references to the places in the HTML where we want to display things.
  var directionsText = document.getElementById("directions");
  var randomWords = document.getElementById("randomWord");
- var wins = document.getElementById("wins");
- var guessCount = document.getElementById("guessCount");
+ var winsElement = document.getElementById("wins");
+ var lossesElement = document.getElementById("losses");
+ var guessCountElement = document.getElementById("guessCount");
  var guessElement = document.getElementById("userGuess");
 
      // Randomly generates a word from the array.
@@ -38,6 +41,9 @@ function guesses(userGuess){
 }
 
 function compareWords(randomWord, userGuess){
+         guesses(userGuess);
+         
+         
         for (var i=0; i<randomWord.length; i++){
             console.log(randomWord[i]);
            if (userGuess===randomWord[i]){
@@ -47,10 +53,37 @@ function compareWords(randomWord, userGuess){
                randomWords.textContent = dashes.join(' ');
            }
         }
+           
+      
+        if (guessCount == 0 ) {
+            alert('You lose');
+            losses++;
+            lossesElement.textContent = "Losses : " + losses;
+            startGame();
+            return;
+        }
+        if(!dashes.includes('-')){
+            //alert('You win!')
+            console.log("you win!");
+            wins++;
+            winsElement.textContent = "Wins : " + wins;
+            startGame();
+            return
+        }
+        guessCount--;
+        guessCountElement.textContent = guessCount;
 }
 
-var rand = randomWordGen();
-dashDisplay(rand);
+startGame();
+
+function startGame(){
+    dashes = [];
+    guessesArray = [];
+    guessElement.textContent = "";
+    guessCount = 10;
+    rand = randomWordGen();
+    dashDisplay(rand);
+}
 
  // This function is run whenever the user presses a key.
  document.onkeyup = function (event) {
@@ -60,7 +93,7 @@ dashDisplay(rand);
      console.log("user guess: " + userGuess);
 
     compareWords(rand, userGuess);
-    guesses(userGuess);
+   
 
     directionsText.textContent = "";
 

@@ -1,6 +1,7 @@
  // Creates an array that lists out all of the words
-//  var randomArray = ["Superman", "Batman", "The Flash", "Martian Man Hunter", "Wonder Woman"];
- var randomArray = ["rock", "paper", "scissors"];
+// var randomArray = ["Superman", "Batman", "Barry Allen", "Martian Man Hunter", "Wonder Woman", "Hal Jordan", "Aquaman"];
+var randomArray = ["Superman", "Batman", "Flash", "Aquaman"];
+//var randomArray = ["rock", "paper", "scissors"];
  var guessesArray = [];
  var dashes = [];
 
@@ -47,7 +48,7 @@ function compareWords(randomWord, userGuess){
          
         for (var i=0; i<randomWord.length; i++){
             console.log(randomWord[i]);
-           if (userGuess===randomWord[i]){
+           if (userGuess.toUpperCase()===randomWord[i].toUpperCase()) {
                console.log(userGuess+"  "+randomWord[i]);
                ///replace the dash with this letter
                dashes[i] = userGuess;
@@ -57,15 +58,14 @@ function compareWords(randomWord, userGuess){
            
       
         if (guessCount == 0 ) {
-            alert('You lose');
+            // alert('You lose');
             losses++;
             lossesElement.textContent = "Losses : " + losses;
             startGame();
             return;
         }
         if(!dashes.includes('-')){
-            //alert('You win!')
-            console.log("you win!");
+            // alert('You win!')
             wins++;
             winsElement.textContent = "Wins : " + wins;
             startGame();
@@ -80,6 +80,7 @@ function startGame(){
     dashes = [];
     guessesArray = [];
     guessElement.textContent = "You have guessed: ";
+    directionsText.textContent = "Guess From the Original Justice League Members";
     guessCount = 11;
     rand = randomWordGen();
     dashDisplay(rand);
@@ -95,7 +96,7 @@ function startGame(){
     compareWords(rand, userGuess);
    
 
-    directionsText.textContent = "";
+    directionsText.textContent = "Guess From the Original Justice League Members";
 
          // Display the user and computer guesses, and wins/losses/ties.
         //  userGuess.textContent = "You chose: " + guesses;

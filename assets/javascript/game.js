@@ -57,7 +57,7 @@ function compareWords(randomWord, userGuess){
         }
            
       
-        if (guessCount == 0 ) {
+        if (guessCount === 0 ) {
             // alert('You lose');
             losses++;
             lossesElement.textContent = "Losses : " + losses;
@@ -94,14 +94,12 @@ function startGame(){
      // Determines which key was pressed.
      var userGuess = event.key;
      //console.log("user guess: " + userGuess);
+     var regex=/^[a-zA-Z]+$/;
 
-    compareWords(rand, userGuess);
-   
-
-    directionsText.textContent = "Guess From the Original Justice League Members";
-
-         // Display the user and computer guesses, and wins/losses/ties.
-        //  userGuess.textContent = "You chose: " + guesses;
-        //  winsText.textContent = "wins: " + wins;
-    //  }
+     // check if user key is a letter
+     if (userGuess.match(regex)) {
+     //do game logic
+     compareWords(rand, userGuess);
+     directionsText.textContent = "Guess From the Original Justice League Members";
+     }
  };

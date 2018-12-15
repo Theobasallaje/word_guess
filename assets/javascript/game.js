@@ -61,6 +61,7 @@ function compareWords(randomWord, userGuess){
             // alert('You lose');
             losses++;
             lossesElement.textContent = "Losses : " + losses;
+            guessCount = 0;
             startGame();
             return;
         }
@@ -81,7 +82,8 @@ function startGame(){
     guessesArray = [];
     guessElement.textContent = "You have guessed: ";
     directionsText.textContent = "Guess From the Original Justice League Members";
-    guessCount = 11;
+    guessCountElement.textContent = "10";
+    guessCount = 10;
     rand = randomWordGen();
     dashDisplay(rand);
 }

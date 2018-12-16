@@ -1,6 +1,12 @@
+// Things to fix:
+// Make where you cannot type the same letter twice
+// Restrict to only letters
+// display the word before game auto-retarts - maybe have a wait timmer for the startGame()
+ 
+ 
  // Creates an array that lists out all of the words
-// var randomArray = ["Superman", "Batman", "Barry Allen", "Martian Man Hunter", "Wonder Woman", "Hal Jordan", "Aquaman"];
-var randomArray = ["Superman", "Batman", "Flash", "Aquaman"];
+var randomArray = ["Super man", "Bat man", "Barry Allen", "Martian Man Hunter", "Wonder Woman", "Hal Jordan", "Aquaman"];
+// var randomArray = ["Superman", "Batman", "Flash", "Aquaman"];
 //var randomArray = ["rock", "paper", "scissors"];
  var guessesArray = [];
  var dashes = [];
@@ -23,16 +29,22 @@ var randomArray = ["Superman", "Batman", "Flash", "Aquaman"];
 function randomWordGen(){
         var randomWord = randomArray[Math.floor(Math.random() * randomArray.length)];
         return randomWord;
-        //console.log(randomWord);
+        console.log(randomWord);
 }
 
 function dashDisplay(randomWord){
     //var dashes = "";
     for (var i=0; i<randomWord.length; i++){
-        dashes.push("-");
+        if (randomWord[i] == " "){
+            dashes.push("&nbsp;");
+            // dashes.push(" ");
+        }
+        else {
+            dashes.push("-");
         //dashes += "-";
+        }
    }
-   randomWords.textContent = dashes.join(' ');
+   randomWords.innerHTML = dashes.join(' ');
 }
 
 function guesses(userGuess){
@@ -52,7 +64,7 @@ function compareWords(randomWord, userGuess){
                console.log(userGuess+"  "+randomWord[i]);
                ///replace the dash with this letter
                dashes[i] = userGuess;
-               randomWords.textContent = dashes.join(' ');
+               randomWords.innerHTML = dashes.join(' ');
            }
         }
            
